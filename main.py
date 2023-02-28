@@ -1,3 +1,8 @@
+# TODO:
+#  1. Create files for Italy and Poland with cordinates data to states.
+#  2. Give at the beggining of the game the user a choice to pick a country.
+#  3. Implement guessing states for picked country.
+
 import turtle
 
 
