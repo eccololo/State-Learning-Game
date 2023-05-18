@@ -4,6 +4,7 @@
 #  3. Implement guessing states for picked country.
 
 import turtle
+from turtle import Turtle
 
 
 def get_x_y_coordinates_from_map(x, y):
@@ -14,7 +15,13 @@ def get_x_y_coordinates_from_map(x, y):
 screen = turtle.Screen()
 screen.setup(width=725, height=491)
 screen.title("Guess the States Game by Mateusz Hyla")
-image = "./img/blank-states-img-it.gif"
+user_choice = screen.textinput(title=f"Country Choice", prompt="Choose: USA / Italy / Poland?").lower()
+countries_short = {
+    "usa": "usa",
+    "poland": "pl",
+    "italy": "it"
+}
+image = f"./img/blank-states-img-{countries_short[user_choice]}.gif"
 
 screen.addshape(image)
 
@@ -28,5 +35,3 @@ turtle.shape(image)
 
 
 screen.mainloop()
-
-
