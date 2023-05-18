@@ -14,13 +14,14 @@ def get_x_y_coordinates_from_map(x, y):
 screen = turtle.Screen()
 screen.setup(width=725, height=491)
 screen.title("U.S. States Game")
-image = "./img/blank-states-img-pl.gif"
+image = "./img/blank-states-img-it.gif"
 
 screen.addshape(image)
 
 turtle.shape(image)
 
-screen.onscreenclick(get_x_y_coordinates_from_map)
+# Testing Purposes.
+# screen.onscreenclick(get_x_y_coordinates_from_map)
 
 # player_answer = screen.textinput(title="Guess the State.", prompt="What's another states name?")
 # print(player_answer)
