@@ -13,7 +13,7 @@ def get_x_y_coordinates_from_map(x, y):
 
 screen = turtle.Screen()
 screen.setup(width=725, height=491)
-screen.title("U.S. States Game")
+screen.title("Guess the States Game by Mateusz Hyla")
 image = "./img/blank-states-img-it.gif"
 
 screen.addshape(image)
