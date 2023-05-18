@@ -89,3 +89,5 @@ while game_is_on:
 
 save_csv_with_states_to_learn(states_df, states_guessed)
 screen.mainloop()
+
+#Test
