@@ -29,6 +29,14 @@ def write_state_name_on_map(player_state_name, fun_state_series):
     turtle_writer.write(player_state_name, font=("Verdana", 12, "bold"), align="center")
 
 
+def save_csv_with_states_to_learn(func_states_df, func_states_guessed):
+    """This function saves states names to CSV file that player didn't guessed."""
+    all_states = func_states_df.state.to_list()
+    states_to_learn = diff(all_states, func_states_guessed)
+    df = pd.DataFrame(states_to_learn, columns=["states"])
+    df.to_csv(f"./edu/{user_choice}_states_to_learn.csv", index=False)
+
+
 root = Tk()
 root.destroy()
 screen = turtle.Screen()
@@ -75,9 +83,5 @@ while game_is_on:
 # Testing Purposes.
 # screen.onscreenclick(get_x_y_coordinates_from_map)
 
-all_states = states_df.state.to_list()
-states_to_learn = diff(all_states, states_guessed)
-df = pd.DataFrame(states_to_learn, columns=["states"])
-df.to_csv(f"./edu/{user_choice}_states_to_learn.csv", index=False)
-
+save_csv_with_states_to_learn(states_df, states_guessed)
 screen.mainloop()
