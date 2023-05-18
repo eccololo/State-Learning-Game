@@ -16,12 +16,16 @@ screen = turtle.Screen()
 screen.setup(width=725, height=491)
 screen.title("Guess the States Game by Mateusz Hyla")
 user_choice = screen.textinput(title=f"Country Choice", prompt="Choose: USA / Italy / Poland?").lower()
-countries_short = {
+countries_shorts = {
     "usa": "usa",
     "poland": "pl",
     "italy": "it"
 }
-image = f"./img/blank-states-img-{countries_short[user_choice]}.gif"
+country_short = countries_shorts[user_choice]
+image = f"./img/blank-states-img-{country_short}.gif"
+csv_cords_file = f"states-{country_short}-cords.csv"
+
+print(csv_cords_file)
 
 screen.addshape(image)
 
