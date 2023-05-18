@@ -1,6 +1,7 @@
 import turtle
 from tkinter import *
 from tkinter import messagebox
+import pandas as pd
 
 
 def get_x_y_coordinates_from_map(x, y):
@@ -25,8 +26,9 @@ image = f"./img/blank-states-img-{country_short}.gif"
 csv_cords_file = f"states-{country_short}-cords.csv"
 
 screen.addshape(image)
-
 turtle.shape(image)
+
+states_df = pd.read_csv(filepath_or_buffer=csv_cords_file)
 
 game_is_on = True
 while game_is_on:
