@@ -2,6 +2,7 @@ import turtle
 from tkinter import *
 from tkinter import messagebox
 import pandas as pd
+import time
 
 
 def get_x_y_coordinates_from_map(x, y):
@@ -52,6 +53,12 @@ while game_is_on:
         turtle_writer.penup()
         turtle_writer.goto(x_cor, y_cor)
         turtle_writer.write(state_name, font=("Verdana", 12, "bold"), align="center")
+
+    if len(states_guessed) == int(all_states_num):
+        turtle_writer.goto(0, 0)
+        turtle_writer.write("Brawo! You Win!", font=("Verdana", 15, "bold"), align="center")
+        time.sleep(2)
+        game_is_on = False
 
 # Testing Purposes.
 # screen.onscreenclick(get_x_y_coordinates_from_map)
