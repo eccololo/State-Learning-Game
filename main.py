@@ -31,8 +31,9 @@ turtle.shape(image)
 game_is_on = True
 while game_is_on:
     player_answer = screen.textinput(title=f"Guess the state of {user_choice}.", prompt="What's another states name?")
-    if player_answer:
-        print(player_answer)
+    player_answer = player_answer.title()
+
+    if player_answer == "Exit":
         break
 
 # Testing Purposes.
