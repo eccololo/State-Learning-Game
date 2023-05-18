@@ -18,6 +18,17 @@ def diff(list1, list2):
     return list(c - d)
 
 
+def write_state_name_on_map(player_state_name, fun_state_series):
+    """This function writes state name on map."""
+    state_name = fun_state_series["state"].item()
+    x_cor = fun_state_series["x"].item()
+    y_cor = fun_state_series["y"].item()
+    turtle_writer.hideturtle()
+    turtle_writer.penup()
+    turtle_writer.goto(x_cor, y_cor)
+    turtle_writer.write(player_state_name, font=("Verdana", 12, "bold"), align="center")
+
+
 root = Tk()
 root.destroy()
 screen = turtle.Screen()
@@ -53,13 +64,7 @@ while game_is_on:
     state_series = states_df[states_df["state"] == player_answer]
     if not len(state_series) == 0:
         states_guessed.append(player_answer)
-        state_name = state_series["state"].item()
-        x_cor = state_series["x"].item()
-        y_cor = state_series["y"].item()
-        turtle_writer.hideturtle()
-        turtle_writer.penup()
-        turtle_writer.goto(x_cor, y_cor)
-        turtle_writer.write(state_name, font=("Verdana", 12, "bold"), align="center")
+        write_state_name_on_map(player_answer, state_series)
 
     if len(states_guessed) == int(all_states_num):
         turtle_writer.goto(0, 0)
@@ -73,6 +78,6 @@ while game_is_on:
 all_states = states_df.state.to_list()
 states_to_learn = diff(all_states, states_guessed)
 df = pd.DataFrame(states_to_learn, columns=["states"])
-df.to_csv("./edu/states_to_learn.csv", index=False)
+df.to_csv(f"./edu/{user_choice}_states_to_learn.csv", index=False)
 
 screen.mainloop()
