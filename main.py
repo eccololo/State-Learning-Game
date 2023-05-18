@@ -23,12 +23,15 @@ countries_shorts = {
 }
 country_short = countries_shorts[user_choice]
 image = f"./img/blank-states-img-{country_short}.gif"
-csv_cords_file = f"states-{country_short}-cords.csv"
+csv_cords_file = f"./csv/states-{country_short}-cords.csv"
 
 screen.addshape(image)
 turtle.shape(image)
 
 states_df = pd.read_csv(filepath_or_buffer=csv_cords_file)
+all_states_num = len(states_df.count(axis="columns"))
+print(all_states_num)
+states_guessed = []
 
 game_is_on = True
 while game_is_on:
