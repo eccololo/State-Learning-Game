@@ -27,6 +27,7 @@ csv_cords_file = f"./csv/states-{country_short}-cords.csv"
 
 screen.addshape(image)
 turtle.shape(image)
+turtle_writer = turtle.Turtle()
 
 states_df = pd.read_csv(filepath_or_buffer=csv_cords_file)
 all_states_num = len(states_df.count(axis="columns"))
@@ -42,6 +43,15 @@ while game_is_on:
         break
 
     state_series = states_df[states_df["state"] == player_answer]
+    if not len(state_series) == 0:
+        states_guessed.append(player_answer)
+        state_name = state_series["state"].item()
+        x_cor = state_series["x"].item()
+        y_cor = state_series["y"].item()
+        turtle_writer.hideturtle()
+        turtle_writer.penup()
+        turtle_writer.goto(x_cor, y_cor)
+        turtle_writer.write(state_name, font=("Verdana", 12, "bold"), align="center")
 
 # Testing Purposes.
 # screen.onscreenclick(get_x_y_coordinates_from_map)
