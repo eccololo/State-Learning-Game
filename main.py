@@ -41,6 +41,8 @@ while game_is_on:
     if player_answer == "Exit":
         break
 
+    state_series = states_df[states_df["state"] == player_answer]
+
 # Testing Purposes.
 # screen.onscreenclick(get_x_y_coordinates_from_map)
 
