@@ -10,6 +10,14 @@ def get_x_y_coordinates_from_map(x, y):
     print(x, y)
 
 
+def diff(list1, list2):
+    """This simple function show difference between data from list 1 and
+    data in list 2."""
+    c = set(list1).union(set(list2))
+    d = set(list1).intersection(set(list2))
+    return list(c - d)
+
+
 root = Tk()
 root.destroy()
 screen = turtle.Screen()
@@ -32,7 +40,6 @@ turtle_writer = turtle.Turtle()
 
 states_df = pd.read_csv(filepath_or_buffer=csv_cords_file)
 all_states_num = len(states_df.count(axis="columns"))
-print(all_states_num)
 states_guessed = []
 
 game_is_on = True
@@ -62,5 +69,10 @@ while game_is_on:
 
 # Testing Purposes.
 # screen.onscreenclick(get_x_y_coordinates_from_map)
+
+all_states = states_df.state.to_list()
+states_to_learn = diff(all_states, states_guessed)
+df = pd.DataFrame(states_to_learn, columns=["states"])
+df.to_csv("./edu/states_to_learn.csv", index=False)
 
 screen.mainloop()
